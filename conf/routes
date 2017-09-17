@@ -11,6 +11,8 @@ GET     /projects/$projectId<[0-9]+>/runs/$runId<[0-9]+>                        
 GET     /projects/$projectId<[0-9]+>/runs                                       nl.biopet.report.controllers.Run.projectRuns(projectId: Int)
 GET     /projects/$projectId<[0-9]+>                                            nl.biopet.report.controllers.Project.single(projectId: Int)
 GET     /projects                                                       nl.biopet.report.controllers.Project.all
+
+# TODO: Main page
 GET     /                                                               controllers.Default.todo
 
 

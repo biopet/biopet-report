@@ -1,17 +1,83 @@
 @(title: String)(content: Html)
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        @* Here's where we render the page title `String`. *@
         <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
-        <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+
+            <!-- Bootstrap core JavaScript
+        ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+        <script src="@routes.Assets.versioned("js/jquery.min.js")"></script>
+
+            <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="@routes.Assets.versioned("css/bootstrap.min.css")">
+
+            <!-- Optional theme -->
+        <link rel="stylesheet" href="@routes.Assets.versioned("css/bootstrap-theme.min.css")">
+
+            <!-- Latest compiled and minified JavaScript -->
+        <script src="@routes.Assets.versioned("js/bootstrap.min.js")"></script>
+
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("css/bootstrap_dashboard.css")">
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("ext/css/sortable-theme-bootstrap.css")">
+
+            <!-- sortable tables //-->
+        <script src="@routes.Assets.versioned("/js/sortable.min.js")"></script>
+        <script src="@routes.Assets.versioned("/js/d3.v3.5.5.min.js")"></script>
+        <script language="JavaScript">
+                <!--
+                $(document).ready(function() {
+                    Sortable.init();
+
+                    $('body').scrollspy({
+                        target: '.bs-sidebar'
+                    });
+                });
+
+                //-->
+        </script>
     </head>
     <body>
-        @* And here's where we render the `Html` object containing
-        * the page content. *@
-        @content
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <ul class="nav navbar-nav">
+                        <li class="root #if (path.isEmpty) active #end">
+                            <a class="navbar-brand" href="/">Biopet Report</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                            <!-- ${path.size} //-->
+                            <!-- ${path} //-->
+
+                    </ul>
+                </div>
+                    <!--/.nav-collapse -->
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div id="side-nav" class="col-sm-3 col-md-2 sidebar">
+                    <ul class="nav nav-sidebar nav-list bs-sidebar">
+
+                    </ul>
+                </div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main content">
+                    @content
+                </div>
+            </div>
+        </div>
     </body>
 </html>
