@@ -1,0 +1,20 @@
+
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /projects/$projectId<[0-9]+>/runs/$runId<[0-9]+>/samples/$sampleId<[0-9]+>      nl.biopet.report.controllers.Sample.single(projectId: Int, runId: Int, sampleId: Int)
+GET     /projects/$projectId<[0-9]+>/runs/$runId<[0-9]+>/samples/*sampleId              nl.biopet.report.controllers.Sample.singleName(projectId: Int, runId: Int, sampleId: String)
+GET     /projects/$projectId<[0-9]+>/runs/$runId<[0-9]+>/samples                        nl.biopet.report.controllers.Sample.runSamples(projectId: Int, runId: Int)
+GET     /projects/$projectId<[0-9]+>/runs/$runId<[0-9]+>                                nl.biopet.report.controllers.Run.single(projectId: Int, runId: Int)
+GET     /projects/$projectId<[0-9]+>/runs                                       nl.biopet.report.controllers.Run.projectRuns(projectId: Int)
+GET     /projects/$projectId<[0-9]+>                                            nl.biopet.report.controllers.Project.single(projectId: Int)
+GET     /projects                                                       nl.biopet.report.controllers.Project.all
+GET     /                                                               controllers.Default.todo
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file                           controllers.Assets.versioned(path="/public", file: Asset)
+
+GET     /*path                                                               nl.biopet.report.controllers.Main.catchAll(path)
