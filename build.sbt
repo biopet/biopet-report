@@ -5,11 +5,11 @@ version := "1.0"
 
 lazy val biopetReport = (project in file(".")).enablePlugins(PlayScala)
 
+resolvers += Resolver.mavenLocal
+
 resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
       
 resolvers += "Akka Snapshot Repository" at "http://repo.akka.io/snapshots/"
-
-resolvers += Resolver.mavenLocal
 
 scalaVersion := "2.11.11"
 
