@@ -1,0 +1,14 @@
+@import nl.biopet.summary.Schema
+@(projects: Seq[Schema.Project])
+
+@main("Not found") {
+    <h1>Projects</h1>
+    <table class="table">
+        <thead><tr><th>Id</th><th>Name</th><th>link</th></tr></thead>
+        <tbody>
+        @for(project <- projects) {
+            <tr><td>@(project.id)</td><td>@(project.name)</td><td><a href="projects/@project.id">Link</a></td></tr>
+        }
+        </tbody>
+    </table>
+}

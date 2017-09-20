@@ -3,6 +3,8 @@ package nl.biopet.report
 import com.google.inject.AbstractModule
 import java.time.Clock
 
+import play.api.db.slick.DatabaseConfigProvider
+
 /**
   * This class is a Guice module that tells Guice how to bind several
   * different types. This Guice module is created when the Play

@@ -1,0 +1,16 @@
+@import nl.biopet.summary.Schema
+@(project: Schema.Project, runs: Seq[Schema.Run])
+
+@main("Not found") {
+    <h1>@(project.name)</h1>
+
+    <table class="table">
+        <thead><tr><th>Name</th><th>Output Dir</th><th>Version</th><th>Commit Hash</th><th>Creation Date</th></tr></thead>
+        <tbody>
+            @for(run <- runs) {
+                <tr><td>@run.name</td><td>@run.outputDir</td><td>@run.version</td><td>@run.commitHash</td><td>@run.creationDate</td></tr>
+            }
+        </tbody>
+    </table>
+
+}
