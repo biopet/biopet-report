@@ -1,0 +1,18 @@
+@import nl.biopet.summary.Schema
+@(samples: Seq[(Schema.Sample, Schema.Run, Schema.Project)])
+@main("Samples") {
+    <h1>Samples</h1>
+    <table class="table">
+        <thead><tr><th>Id</th><th>Name</th><th>Run</th><th>Project</th></tr></thead>
+        <tbody>
+        @for((sample, run, project) <- samples) {
+            <tr>
+                <td>@(sample.id)</td>
+                <td><a href="/samples/@sample.id">@(sample.name)</a></td>
+                <td><a href="/runs/@run.id">@(run.name)</a></td>
+                <td><a href="/projects/@project.id">@(project.name)</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

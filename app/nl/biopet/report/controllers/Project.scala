@@ -2,19 +2,22 @@ package nl.biopet.report.controllers
 
 import javax.inject.Inject
 
-import nl.biopet.summary.Schema
+import nl.biopet.summary.SummaryDbWrite
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import play.api.mvc.{AbstractController, ControllerComponents}
-import slick.driver.JdbcProfile
-import slick.jdbc.H2Profile.api._
+import slick.jdbc.JdbcProfile
 
 import scala.concurrent.ExecutionContext
 
 class Project @Inject()(protected val dbConfigProvider: DatabaseConfigProvider,
-                     cc: ControllerComponents)(implicit exec: ExecutionContext) extends AbstractController(cc)  with HasDatabaseConfigProvider[JdbcProfile] {
+                     cc: ControllerComponents)(implicit exec: ExecutionContext) extends AbstractController(cc)
+  with HasDatabaseConfigProvider[JdbcProfile] {
+
+  lazy val summary = new SummaryDbWrite(db)
+
   def single(projectId: Int) = Action.async { implicit request =>
-    val project = db.run(Schema.projects.filter(_.id === projectId).result).map(_.headOption)
-    val runs = db.run(Schema.runs.filter(_.projectId === projectId).result)
+    val project = summary.getProject(projectId)
+    val runs = summary.getRuns(protectId = Some(projectId))
     for {
       p <- project
       r <- runs
@@ -27,7 +30,7 @@ class Project @Inject()(protected val dbConfigProvider: DatabaseConfigProvider,
   }
 
   def all() = Action.async { implicit request =>
-    db.run(Schema.projects.result)
+    summary.getProjects()
       .map(p => Ok(nl.biopet.report.views.html.projectList(p)))
   }
 
