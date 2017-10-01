@@ -1,4 +1,4 @@
-organization := "nl.biopet"
+organization := "com.github.biopet"
 name := "biopetReport"
  
 version := "0.1.0-SNAPSHOT"
@@ -17,6 +17,6 @@ libraryDependencies += "com.typesafe.play" %% "play-slick" % "3.0.0"
 
 libraryDependencies ++= Seq( jdbc , ehcache , ws , specs2 % Test , guice )
 
-libraryDependencies += "nl.biopet" %% "biopet-summary" % "0.1.0-SNAPSHOT"
+libraryDependencies += "com.github.biopet" %% "biopet-summary" % "0.1.0-SNAPSHOT"
 
 unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )
