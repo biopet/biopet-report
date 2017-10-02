@@ -1,7 +1,5 @@
 organization := "com.github.biopet"
 name := "biopetReport"
- 
-version := "0.1.0-SNAPSHOT"
 
 lazy val biopetReport = (project in file(".")).enablePlugins(PlayScala)
 
