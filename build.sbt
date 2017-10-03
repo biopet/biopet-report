@@ -4,8 +4,8 @@ name := "biopetReport"
 lazy val biopetReport = (project in file(".")).enablePlugins(PlayScala)
 
 resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
-      
 resolvers += "Akka Snapshot Repository" at "http://repo.akka.io/snapshots/"
+resolvers += Resolver.sonatypeRepo("snapshots")
 
 scalaVersion := "2.11.11"
 
