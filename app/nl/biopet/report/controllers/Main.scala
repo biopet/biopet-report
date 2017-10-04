@@ -11,7 +11,9 @@ import slick.jdbc.H2Profile.api._
 import scala.concurrent.{ExecutionContext, Future}
 
 class Main @Inject()(protected val dbConfigProvider: DatabaseConfigProvider,
-                     cc: ControllerComponents)(implicit exec: ExecutionContext) extends AbstractController(cc)  with HasDatabaseConfigProvider[JdbcProfile] {
+                     cc: ControllerComponents)(implicit exec: ExecutionContext)
+    extends AbstractController(cc)
+    with HasDatabaseConfigProvider[JdbcProfile] {
   def catchAll(path: String) = Action {
     NotFound(nl.biopet.report.views.html.notFound())
   }

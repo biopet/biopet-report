@@ -9,9 +9,11 @@ import slick.jdbc.JdbcProfile
 
 import scala.concurrent.ExecutionContext
 
-class Project @Inject()(protected val dbConfigProvider: DatabaseConfigProvider,
-                     cc: ControllerComponents)(implicit exec: ExecutionContext) extends AbstractController(cc)
-  with HasDatabaseConfigProvider[JdbcProfile] {
+class Project @Inject()(
+    protected val dbConfigProvider: DatabaseConfigProvider,
+    cc: ControllerComponents)(implicit exec: ExecutionContext)
+    extends AbstractController(cc)
+    with HasDatabaseConfigProvider[JdbcProfile] {
 
   lazy val summary = new SummaryDbWrite(db)
 
@@ -30,7 +32,8 @@ class Project @Inject()(protected val dbConfigProvider: DatabaseConfigProvider,
   }
 
   def all() = Action.async { implicit request =>
-    summary.getProjects()
+    summary
+      .getProjects()
       .map(p => Ok(nl.biopet.report.views.html.projectList(p)))
   }
 
