@@ -13,9 +13,9 @@ libraryDependencies += "com.typesafe.play" %% "play-slick" % "3.0.0"
 
 libraryDependencies ++= Seq( jdbc , ehcache , ws , specs2 % Test , guice )
 
-libraryDependencies += "com.github.biopet" %% "biopet-summary-utils" % "0.1.0-SNAPSHOT"
+libraryDependencies += "com.github.biopet" %% "biopet-summary-utils" % "0.1.0-SNAPSHOT" changing()
 
-libraryDependencies += "com.github.biopet" %% "biopet-test-utils" % "0.1.0-SNAPSHOT" % Test
+libraryDependencies += "com.github.biopet" %% "biopet-test-utils" % "0.1.0-SNAPSHOT" % Test changing()
 
 unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )
 
